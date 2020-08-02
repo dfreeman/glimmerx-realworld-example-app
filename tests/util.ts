@@ -31,9 +31,7 @@ export async function renderComponent(
     options = { element: elementOrOptions };
   } else {
     const element =
-      elementOrOptions.element instanceof HTMLElement
-        ? elementOrOptions.element
-        : getTestRoot();
+      elementOrOptions.element instanceof HTMLElement ? elementOrOptions.element : getTestRoot();
 
     options = { ...elementOrOptions, element };
   }

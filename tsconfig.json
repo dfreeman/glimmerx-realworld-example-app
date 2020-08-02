@@ -1,18 +1,15 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es2019",
     "module": "es2015",
     "inlineSourceMap": true,
     "inlineSources": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
-    "types": [
-      "qunit"
-    ]
+    "strict": true,
+    "plugins": [{ "name": "@glint/tsserver-plugin" }],
+    // Avoid https://github.com/glimmerjs/glimmer-vm/issues/1116
+    "skipLibCheck": true
   },
-  "exclude": [
-    "node_modules",
-    "tmp",
-    "dist"
-  ]
+  "include": ["src", "tests"]
 }
