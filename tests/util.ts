@@ -12,7 +12,7 @@ import 'qunit-dom/dist/qunit-dom';
 
 QUnit.start();
 
-const getTestRoot = (): HTMLElement => document.getElementById('qunit-fixture');
+const getTestRoot = (): HTMLElement => document.getElementById('qunit-fixture') ?? document.body;
 
 // Setup QUnit.dom
 Object.defineProperty(QUnit.assert.dom, 'rootElement', { get: getTestRoot });
@@ -42,6 +42,7 @@ export async function renderComponent(
 // re-export QUnit modules for convenience
 export const module = QUnit.module;
 export const test = QUnit.test;
+export const skip = QUnit.skip;
 
 // Re-export didRender for convenience
 export { didRender };
