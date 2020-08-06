@@ -1,4 +1,5 @@
 import { helper as glimmerXHelper } from '@glimmerx/helper';
+import * as marked from 'marked';
 import { assert } from './debug';
 
 /**
@@ -40,6 +41,14 @@ export const onChange = helper((args: { callback(): void }, ...values: Array<unk
   args.callback()
 );
 
+/** Generates HTML from markdown */
+export const markdown = helper(({}, source: string) => marked.parse(source));
+
+/** Generate an array containing an (inclusive) range of integers */
+export const range = helper(({}, start: number, end: number) => {
+  return Array.from(Array(end - start), (_, i) => start + i);
+});
+
 /** A convenience helper for pulling data out of a form. */
 export const gatherFormData = helper(
   ({}, callback: (data: Record<string, string | null>, form: HTMLFormElement) => void) => {
@@ -58,6 +67,16 @@ export const gatherFormData = helper(
     };
   }
 );
+
+/** Returns a human readable date */
+export const humanizeDate = helper(({}, date: string) => {
+  return new Date(date).toLocaleDateString(undefined, {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
+});
+
 /**
  * Because templates don't have a native notion of equality, there's no
  * in-built way to do type narrowing based on a discriminator field. In
