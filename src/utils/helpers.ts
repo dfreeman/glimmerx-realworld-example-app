@@ -11,6 +11,34 @@ export function helper<T extends (...params: any) => any>(f: T): T {
   return glimmerXHelper((positional, named) => f(named, ...positional)) as T;
 }
 
+/**
+ * Indicates that a particular location in control flow should never
+ * be reached. This is witnessed in the type system by a value of type
+ * `never`, which should only be obtainable by ruling out all possible
+ * values it could have had.
+ */
+export const unreachable = helper(({}, value: never) => {
+  throw new Error('Internal error: unreachable code... reached!');
+});
+
+/** console.log */
+export const log = helper(({}, ...values: Array<unknown>) => console.log(...values));
+
+/** `!` */
+export const not = helper(({}, value: unknown) => !value);
+
+/** `===` */
+export const eq = helper(<T>({}, left: unknown, right: T): left is T => left === right);
+
+/** Joins an array */
+export const join = helper((args: { separator?: string }, items: Array<unknown>) => {
+  return items.join(args.separator ?? ' ');
+});
+
+/* Invokes the given callback when one of the passed values changes */
+export const onChange = helper((args: { callback(): void }, ...values: Array<unknown>) =>
+  args.callback()
+);
 
 /** A convenience helper for pulling data out of a form. */
 export const gatherFormData = helper(
