@@ -1,4 +1,5 @@
 import { helper as glimmerXHelper } from '@glimmerx/helper';
+import { assert } from './debug';
 
 /**
  * A slightly more convenient signature for making helpers. Notably,
@@ -10,6 +11,25 @@ export function helper<T extends (...params: any) => any>(f: T): T {
   return glimmerXHelper((positional, named) => f(named, ...positional)) as T;
 }
 
+
+/** A convenience helper for pulling data out of a form. */
+export const gatherFormData = helper(
+  ({}, callback: (data: Record<string, string | null>, form: HTMLFormElement) => void) => {
+    return (event: Event) => {
+      event.preventDefault();
+
+      assert(event.target instanceof HTMLFormElement);
+
+      let data: Record<string, string | null> = {};
+      for (let [field, value] of new FormData(event.target).entries()) {
+        if (typeof value === 'string') {
+          data[field] = value || null;
+        }
+      }
+      callback(data, event.target);
+    };
+  }
+);
 /**
  * Because templates don't have a native notion of equality, there's no
  * in-built way to do type narrowing based on a discriminator field. In
