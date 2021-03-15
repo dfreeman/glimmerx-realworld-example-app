@@ -48,7 +48,7 @@
     "gh-pages": "^3.1.0",
     "glob": "7.1.6",
     "html-webpack-plugin": "^4.0.4",
-    "marked": "^1.1.1",
+    "marked": "^2.0.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.1.1",
     "qunit": "^2.9.3",
