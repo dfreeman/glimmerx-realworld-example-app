@@ -1,9 +1,14 @@
-import Component, { hbs } from '@glimmerx/component';
+import Component from '@glint/environment-glimmerx/component';
+import { hbs } from '@glimmerx/component';
 import { service } from '@glimmerx/service';
 
 import { APIService } from '../utils/api';
 
-export default class RequireUser extends Component {
+export interface RequireUserSignature {
+  Yields: { default: [] };
+}
+
+export default class RequireUser extends Component<RequireUserSignature> {
   @service private api!: APIService;
 
   public static template = hbs`

@@ -1,6 +1,7 @@
-import Component, { hbs, tracked } from '@glimmerx/component';
-import { action } from '@glimmerx/modifier';
-import { fn } from '@glimmerx/helper';
+import Component, { tracked } from '@glint/environment-glimmerx/component';
+import { action } from '@glint/environment-glimmerx/modifier';
+import { fn } from '@glint/environment-glimmerx/helper';
+import { hbs } from '@glimmerx/component';
 
 import { Paginated, Article } from '../types';
 import { LinkTo } from '../utils/routing';
@@ -11,11 +12,11 @@ import FavoriteButton from './FavoriteButton';
 
 export type ArticleLoader = (offset: number, limit: number) => Promise<Paginated<Article>>;
 
-export interface ArticleListArgs {
-  loadArticles: ArticleLoader;
+export interface ArticleListSignature {
+  Args: { loadArticles: ArticleLoader };
 }
 
-export default class ArticleList extends Component<ArticleListArgs> {
+export default class ArticleList extends Component<ArticleListSignature> {
   @tracked private offset = 0;
   @tracked private limit = 10;
 
@@ -28,7 +29,7 @@ export default class ArticleList extends Component<ArticleListArgs> {
   }
 
   public static template = hbs`
-    {{onChange @loadArticles callback=(fn this.updatePage 1)}}
+    {{onChange @loadArticles (fn this.updatePage 1)}}
 
     <Await @promise={{this.articles}}>
       <:pending as |previous|>
@@ -50,12 +51,14 @@ export default class ArticleList extends Component<ArticleListArgs> {
   `;
 }
 
-interface ArticlesArgs {
-  articles: Paginated<Article>;
-  onPageChange: (page: number) => void;
+interface ArticlesSignature {
+  Args: {
+    articles: Paginated<Article>;
+    onPageChange: (page: number) => void;
+  };
 }
 
-class Articles extends Component<ArticlesArgs> {
+class Articles extends Component<ArticlesSignature> {
   public static template = hbs`
     {{#if @articles.items.length}}
       {{#each @articles.items key="slug" as |article|}}
@@ -100,12 +103,15 @@ class Articles extends Component<ArticlesArgs> {
     {{/if}}
   `;
 }
-interface PaginationArgs {
-  data: Paginated<unknown>;
-  onChangePage: (page: number) => void;
+
+interface PaginationSignature {
+  Args: {
+    data: Paginated<unknown>;
+    onChangePage: (page: number) => void;
+  };
 }
 
-class Pagination extends Component<PaginationArgs> {
+class Pagination extends Component<PaginationSignature> {
   private get lastPage(): number {
     let { limit, total } = this.args.data;
     return Math.floor(total / limit) + 1;

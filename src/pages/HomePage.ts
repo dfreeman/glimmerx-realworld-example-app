@@ -1,6 +1,7 @@
-import Component, { hbs, tracked } from '@glimmerx/component';
-import { fn } from '@glimmerx/helper';
-import { action } from '@glimmerx/modifier';
+import Component, { tracked } from '@glint/environment-glimmerx/component';
+import { hbs } from '@glimmerx/component';
+import { fn } from '@glint/environment-glimmerx/helper';
+import { action } from '@glint/environment-glimmerx/modifier';
 import { service } from '@glimmerx/service';
 
 import { User } from '../types';
@@ -10,13 +11,13 @@ import { APIService } from '../utils/api';
 import ArticleList, { ArticleLoader } from '../components/ArticleList';
 import FakeLink from '../components/FakeLink';
 
-export interface HomePageArgs {
-  currentUser: User | null;
+export interface HomePageSignature {
+  Args: { currentUser: User | null };
 }
 
 type TabState = { tab: 'your-feed' } | { tab: 'global-feed' } | { tab: 'tag'; tag: string };
 
-export default class HomePage extends Component<HomePageArgs> {
+export default class HomePage extends Component<HomePageSignature> {
   @service private api!: APIService;
   @tracked private tabState: TabState = { tab: this.api.isLoggedIn ? 'your-feed' : 'global-feed' };
 
@@ -91,11 +92,11 @@ export default class HomePage extends Component<HomePageArgs> {
   `;
 }
 
-interface TagsPanelArgs {
-  showTagPosts: (tag: string) => void;
+interface TagsPanelSignature {
+  Args: { showTagPosts: (tag: string) => void };
 }
 
-class TagsPanel extends Component<TagsPanelArgs> {
+class TagsPanel extends Component<TagsPanelSignature> {
   @service private api!: APIService;
 
   private tags = this.api.getTags();

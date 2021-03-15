@@ -1,4 +1,4 @@
-import { tracked } from '@glimmerx/component';
+import { tracked } from '@glint/environment-glimmerx/component';
 import { User, Profile, Article, Comment, Paginated } from '../types';
 
 type UserResponse = {

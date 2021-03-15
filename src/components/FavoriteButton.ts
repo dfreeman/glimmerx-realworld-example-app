@@ -1,16 +1,21 @@
-import Component, { hbs, tracked } from '@glimmerx/component';
+import Component, { tracked } from '@glint/environment-glimmerx/component';
+import { hbs } from '@glimmerx/component';
 import { service } from '@glimmerx/service';
-import { action, on } from '@glimmerx/modifier';
+import { action, on } from '@glint/environment-glimmerx/modifier';
 
 import { APIService } from '../utils/api';
 import { Article } from '../types';
 
-export interface FavoriteButtonArgs {
-  article: Article;
-  mini?: boolean;
+export interface FavoriteButtonSignature {
+  Args: {
+    /** The article to toggle favorite status for. */
+    article: Article;
+    /** Whether to display the button in its 'mini' format.  */
+    mini?: boolean;
+  };
 }
 
-export default class FavoriteButton extends Component<FavoriteButtonArgs> {
+export default class FavoriteButton extends Component<FavoriteButtonSignature> {
   @service private api!: APIService;
 
   @tracked private processing = false;

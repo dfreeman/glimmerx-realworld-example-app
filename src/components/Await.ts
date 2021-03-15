@@ -1,5 +1,5 @@
-import Component, { hbs, tracked } from '@glimmerx/component';
-
+import Component, { tracked } from '@glint/environment-glimmerx/component';
+import { hbs } from '@glimmerx/component';
 import { is } from '../utils/helpers';
 
 export type AsyncState<T> =
@@ -7,14 +7,33 @@ export type AsyncState<T> =
   | { state: 'resolved'; value: T }
   | { state: 'rejected'; error: unknown };
 
-export interface AwaitArgs<T> {
-  promise: Promise<T>;
-  expectSettledPromises?: boolean;
+export interface AwaitSignature<T> {
+  Args: {
+    promise: Promise<T>;
+    expectSettledPromises?: boolean;
+  };
+  Yields: {
+    /**
+     * Rendered when the current promise has resolved, yielding the resolved value.
+     */
+    resolved?: [value: T];
+
+    /**
+     * Rendered when the current promise hasn't yet settled, yielding the previous
+     * resolved value if one exists.
+     */
+    pending?: [previousValue: T | null];
+
+    /**
+     * Rendered when the current promise has rejected, yielding the error value.
+     */
+    rejected?: [error: unknown];
+  };
 }
 
 const PENDING = Symbol();
 
-export default class Await<T> extends Component<AwaitArgs<T>> {
+export default class Await<T> extends Component<AwaitSignature<T>> {
   @tracked private state: AsyncState<T> = { state: 'pending', previous: null };
 
   private lastPromise: Promise<T> | null = null;

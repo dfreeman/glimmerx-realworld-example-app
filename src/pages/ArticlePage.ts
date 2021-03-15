@@ -1,7 +1,8 @@
-import Component, { hbs, tracked } from '@glimmerx/component';
+import Component, { tracked } from '@glint/environment-glimmerx/component';
+import { hbs } from '@glimmerx/component';
 import { service } from '@glimmerx/service';
-import { on, action } from '@glimmerx/modifier';
-import { fn } from '@glimmerx/helper';
+import { on, action } from '@glint/environment-glimmerx/modifier';
+import { fn } from '@glint/environment-glimmerx/helper';
 
 import { Article, User, Comment } from '../types';
 import { APIService } from '../utils/api';
@@ -12,12 +13,14 @@ import { FollowButton } from '../components/FollowButton';
 import FavoriteButton from '../components/FavoriteButton';
 import { RoutingService } from '../utils/routing';
 
-export interface ArticlePageArgs {
-  slug: string;
-  currentUser: User | null;
+export interface ArticlePageSignature {
+  Args: {
+    slug: string;
+    currentUser: User | null;
+  };
 }
 
-export default class ArticlePage extends Component<ArticlePageArgs> {
+export default class ArticlePage extends Component<ArticlePageSignature> {
   @service private api!: APIService;
 
   private get article(): Promise<Article> {
@@ -65,12 +68,14 @@ export default class ArticlePage extends Component<ArticlePageArgs> {
   `;
 }
 
-interface CommentsArgs {
-  user: User | null;
-  article: Article;
+interface CommentsSignature {
+  Args: {
+    user: User | null;
+    article: Article;
+  };
 }
 
-class Comments extends Component<CommentsArgs> {
+class Comments extends Component<CommentsSignature> {
   @service private api!: APIService;
 
   @tracked private comments = this.api.getComments(this.args.article.slug);
@@ -126,12 +131,14 @@ class Comments extends Component<CommentsArgs> {
   `;
 }
 
-interface ArticleMetaArgs {
-  article: Article;
-  currentUser: User | null;
+interface ArticleMetaSignature {
+  Args: {
+    article: Article;
+    currentUser: User | null;
+  };
 }
 
-class ArticleMeta extends Component<ArticleMetaArgs> {
+class ArticleMeta extends Component<ArticleMetaSignature> {
   @service private api!: APIService;
   @service private routing!: RoutingService;
 
@@ -182,13 +189,15 @@ class ArticleMeta extends Component<ArticleMetaArgs> {
   `;
 }
 
-interface CommentsListArgs {
-  comments: Array<Comment>;
-  user: User | null;
-  deleteComment: (comment: Comment) => void;
+interface CommentsListSignature {
+  Args: {
+    comments: Array<Comment>;
+    user: User | null;
+    deleteComment: (comment: Comment) => void;
+  };
 }
 
-class CommentsList extends Component<CommentsListArgs> {
+class CommentsList extends Component<CommentsListSignature> {
   public static template = hbs`
     {{#each @comments key="id" as |comment|}}
       <div class="card">

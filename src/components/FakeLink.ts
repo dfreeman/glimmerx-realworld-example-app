@@ -1,16 +1,20 @@
-import Component, { hbs } from '@glimmerx/component';
-import { on, action } from '@glimmerx/modifier';
+import Component from '@glint/environment-glimmerx/component';
+import { on, action } from '@glint/environment-glimmerx/modifier';
+import { hbs } from '@glimmerx/component';
 
-export interface FakeLinkArgs {
-  active?: boolean;
-  disabled?: boolean;
-  onClick?: () => void;
+export interface FakeLinkSignature {
+  Args: {
+    active?: boolean;
+    disabled?: boolean;
+    onClick?: () => void;
+  };
+  Yields: { default: [] };
 }
 
 // For when the mocks call for a link, but it doesn't actually...
 // go anywhere 🙃
 
-export default class FakeLink extends Component<FakeLinkArgs> {
+export default class FakeLink extends Component<FakeLinkSignature> {
   public static template = hbs`
     <a
       href=""

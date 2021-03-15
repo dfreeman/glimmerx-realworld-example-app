@@ -1,4 +1,5 @@
-import Component, { hbs } from '@glimmerx/component';
+import Component from '@glint/environment-glimmerx/component';
+import { hbs } from '@glimmerx/component';
 import { service } from '@glimmerx/service';
 
 import { RoutingService, LinkTo } from './utils/routing';
@@ -61,7 +62,13 @@ export default class App extends Component {
   `;
 }
 
-class ResolveUserSession extends Component {
+interface ResolveUserSessionSignature {
+  Yields: {
+    default: [user: User | null];
+  };
+}
+
+class ResolveUserSession extends Component<ResolveUserSessionSignature> {
   @service private api!: APIService;
 
   public static template = hbs`
@@ -81,11 +88,11 @@ class ResolveUserSession extends Component {
   `;
 }
 
-interface ActivePageOutletArgs {
-  user: User | null;
+interface ActivePageOutletSignature {
+  Args: { user: User | null };
 }
 
-class ActivePageOutlet extends Component<ActivePageOutletArgs> {
+class ActivePageOutlet extends Component<ActivePageOutletSignature> {
   @service private routing!: RoutingService;
 
   /*

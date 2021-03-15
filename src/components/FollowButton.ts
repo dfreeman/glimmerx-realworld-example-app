@@ -1,15 +1,16 @@
-import Component, { hbs, tracked } from '@glimmerx/component';
+import Component, { tracked } from '@glint/environment-glimmerx/component';
+import { hbs } from '@glimmerx/component';
 import { service } from '@glimmerx/service';
-import { on, action } from '@glimmerx/modifier';
+import { on, action } from '@glint/environment-glimmerx/modifier';
 
 import { Profile } from '../types';
 import { APIService } from '../utils/api';
 
-export interface FollowButtonArgs {
-  user: Profile;
+export interface FollowButtonSignature {
+  Args: { user: Profile };
 }
 
-export class FollowButton extends Component<FollowButtonArgs> {
+export class FollowButton extends Component<FollowButtonSignature> {
   @service private api!: APIService;
 
   @tracked private processing = false;

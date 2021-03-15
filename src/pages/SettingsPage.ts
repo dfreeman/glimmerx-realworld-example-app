@@ -1,5 +1,6 @@
-import Component, { hbs, tracked } from '@glimmerx/component';
-import { on, action } from '@glimmerx/modifier';
+import Component, { tracked } from '@glint/environment-glimmerx/component';
+import { hbs } from '@glimmerx/component';
+import { on, action } from '@glint/environment-glimmerx/modifier';
 import { service } from '@glimmerx/service';
 
 import { User } from '../types';
@@ -9,11 +10,11 @@ import { APIService } from '../utils/api';
 import ErrorMessages from '../components/ErrorMessages';
 import { RoutingService } from '../utils/routing';
 
-export interface SettingsPageArgs {
-  currentUser: User | null;
+export interface SettingsPageSignature {
+  Args: { currentUser: User | null };
 }
 
-export default class SettingsPage extends Component<SettingsPageArgs> {
+export default class SettingsPage extends Component<SettingsPageSignature> {
   @service private api!: APIService;
   @service private routing!: RoutingService;
 

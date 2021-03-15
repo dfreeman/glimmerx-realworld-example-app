@@ -1,5 +1,6 @@
-import Component, { hbs, tracked } from '@glimmerx/component';
-import { action, on } from '@glimmerx/modifier';
+import Component, { tracked } from '@glint/environment-glimmerx/component';
+import { hbs } from '@glimmerx/component';
+import { action, on } from '@glint/environment-glimmerx/modifier';
 import { service } from '@glimmerx/service';
 
 import ErrorMessages from '../components/ErrorMessages';
@@ -10,11 +11,11 @@ import { join, gatherFormData } from '../utils/helpers';
 import { APIService } from '../utils/api';
 import { RoutingService } from '../utils/routing';
 
-export interface EditorPageArgs {
-  slug?: string;
+export interface EditorPageSignature {
+  Args: { slug?: string };
 }
 
-export default class EditorPage extends Component<EditorPageArgs> {
+export default class EditorPage extends Component<EditorPageSignature> {
   @service private api!: APIService;
   @service private routing!: RoutingService;
 
@@ -89,7 +90,7 @@ export default class EditorPage extends Component<EditorPageArgs> {
                           class="form-control"
                           placeholder="Enter tags"
                           name="tagList"
-                          value={{if article (join article.tagList separator=', ')}}
+                          value={{if article (join article.tagList ', ')}}
                         >
                           <div class="tag-list">
                         </div>

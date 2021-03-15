@@ -1,12 +1,13 @@
-import Component, { hbs } from '@glimmerx/component';
+import Component from '@glint/environment-glimmerx/component';
+import { hbs } from '@glimmerx/component';
 
 import { assert } from '../utils/debug';
 
-export interface ErrorMessagesArgs {
-  error: unknown;
+export interface ErrorMessagesSignature {
+  Args: { error: unknown };
 }
 
-export default class ErrorMessages extends Component<ErrorMessagesArgs> {
+export default class ErrorMessages extends Component<ErrorMessagesSignature> {
   private get errors(): Array<string> {
     let error = this.args.error as Record<string, unknown>;
 

@@ -1,5 +1,7 @@
-import Component, { hbs, tracked } from '@glimmerx/component';
+import Component, { tracked } from '@glint/environment-glimmerx/component';
+import { hbs } from '@glimmerx/component';
 import { service } from '@glimmerx/service';
+
 import { is } from './helpers';
 
 export type RecognizedRoute =
@@ -14,12 +16,15 @@ export type RecognizedRoute =
 
 export type RouteName = RecognizedRoute['name'];
 
-export interface LinkToArgs {
-  route: RouteName;
-  params?: string | Array<string>;
+export interface LinkToSignature {
+  Args: {
+    route: RouteName;
+    params?: string | Array<string>;
+  };
+  Yields: { default: [] };
 }
 
-export class LinkTo extends Component<LinkToArgs> {
+export class LinkTo extends Component<LinkToSignature> {
   @service private routing!: RoutingService;
 
   private get path(): string {

@@ -1,5 +1,6 @@
-import Component, { hbs, tracked } from '@glimmerx/component';
-import { on, action } from '@glimmerx/modifier';
+import Component, { tracked } from '@glint/environment-glimmerx/component';
+import { hbs } from '@glimmerx/component';
+import { on, action } from '@glint/environment-glimmerx/modifier';
 import { service } from '@glimmerx/service';
 
 import { LinkTo, RoutingService } from '../utils/routing';
@@ -7,11 +8,11 @@ import { APIService } from '../utils/api';
 import { gatherFormData } from '../utils/helpers';
 import ErrorMessages from '../components/ErrorMessages';
 
-export interface AuthPageArgs {
-  register?: boolean;
+export interface AuthPageSignature {
+  Args: { register?: boolean };
 }
 
-export default class AuthPage extends Component<AuthPageArgs> {
+export default class AuthPage extends Component<AuthPageSignature> {
   @service private api!: APIService;
   @service private routing!: RoutingService;
 

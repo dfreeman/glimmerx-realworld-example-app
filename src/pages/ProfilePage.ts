@@ -1,4 +1,5 @@
-import Component, { hbs } from '@glimmerx/component';
+import Component from '@glint/environment-glimmerx/component';
+import { hbs } from '@glimmerx/component';
 import { service } from '@glimmerx/service';
 
 import { APIService } from '../utils/api';
@@ -9,13 +10,15 @@ import ArticleList, { ArticleLoader } from '../components/ArticleList';
 import { LinkTo } from '../utils/routing';
 import { FollowButton } from '../components/FollowButton';
 
-export interface ProfilePageArgs {
-  currentUser: User | null;
-  username: string;
-  favorites?: boolean;
+export interface ProfilePageSignature {
+  Args: {
+    currentUser: User | null;
+    username: string;
+    favorites?: boolean;
+  };
 }
 
-export default class ProfilePage extends Component<ProfilePageArgs> {
+export default class ProfilePage extends Component<ProfilePageSignature> {
   @service private api!: APIService;
 
   private lastFetchedProfile?: { username: string; promise: Promise<Profile> };
