@@ -106,7 +106,7 @@ class ActivePageOutlet extends Component<ActivePageOutletSignature> {
       {{else if (is activeRoute 'name' 'register')}}
         <AuthPage @register={{true}} />
       {{else if (is activeRoute 'name' 'home')}}
-        <HomePage @currentUser={{@user}} />}}
+        <HomePage @currentUser={{@user}} />
       {{else if (is activeRoute 'name' 'settings')}}
         <SettingsPage @currentUser={{@user}} />
       {{else if (is activeRoute 'name' 'editor')}}
