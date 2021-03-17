@@ -1,6 +1,6 @@
 # ![glimmerx-realworld-example-app](header.png)
 
-This repo is a [GlimmerX](https://github.com/glimmerjs/glimmer-experimental) implementation of the [RealWorld](https://github.com/gothinkster/realworld) example application [Conduit](https://demo.realworld.io/).
+This repo is a [GlimmerX](https://github.com/glimmerjs/glimmer-experimental) implementation of the [RealWorld](https://github.com/gothinkster/realworld) example application [Conduit](https://demo.realworld.io/). It uses [Glint](https://github.com/typed-ember/glint) for template-aware end to end typechecking.
 
 Unlike most RealWorld example apps, this one doesn't set out to be an exemplary demonstration of best practices for working with the tool of choice, as no such best practices exist for GlimmerX. Most of the patterns employed were things I made up on the spot, but "experimental" is right in the name of the library, so be warned that Here There Be Dragons.
 
