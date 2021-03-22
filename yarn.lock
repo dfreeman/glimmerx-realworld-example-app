@@ -1480,52 +1480,52 @@
     "@glimmerx/core" "0.4.2"
     ember-cli-babel "^7.18.0"
 
-"@glint/config@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@glint/config/-/config-0.3.0.tgz#0a069e97aafc55f74c1e3280b7092687f72ce1f8"
-  integrity sha512-XRdEp2P2qVX2jTCANPRVWOoGpz1kM6HkqYjq0RkgosoqZnsl3G+lYJv3jtVaTSY1FUQzuSpkhi35PwqpGHv8Cw==
+"@glint/config@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@glint/config/-/config-0.4.1.tgz#8dea140e734e1e70404e88a85e791693d164b1df"
+  integrity sha512-PxZ0fGJzN5EQ/JoR7+1S+/Kj9VqpDHC+tmlkW88CJoCFlLxb2p1N5EMfpDJwdqyyauzc4a408VaaxyOUNT6hMA==
   dependencies:
     cosmiconfig "^6.0.0"
     escape-string-regexp "^4.0.0"
     minimatch "^3.0.4"
     resolve "^1.17.0"
 
-"@glint/core@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@glint/core/-/core-0.3.0.tgz#148076b54b08dbcf709851daad5bee36c596d9c9"
-  integrity sha512-JxqDVSNGWM5j+NC9Pcm4AhINsBBYasezCrxM3SuIwomi/LtzJH65U9hlLcX4fRlGY9mskgrTfO/KmP8AQ431lQ==
+"@glint/core@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@glint/core/-/core-0.4.1.tgz#943be1d8abeaed3c59190f423f23f2a3ff3144e4"
+  integrity sha512-IMhWjOFOz/l3cu5rEfarzjnqOVHpg//krlmsR09exxt0qFjRsTmZ1/VZsnPWyTtMl7DvC2IwX1sXfPTVoctKHA==
   dependencies:
-    "@glint/config" "^0.3.0"
-    "@glint/transform" "^0.3.0"
+    "@glint/config" "^0.4.1"
+    "@glint/transform" "^0.4.1"
     resolve "^1.17.0"
     vscode-languageserver "^7.0.0"
     vscode-languageserver-textdocument "^1.0.1"
     vscode-uri "^3.0.2"
     yargs "^15.3.1"
 
-"@glint/environment-glimmerx@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@glint/environment-glimmerx/-/environment-glimmerx-0.3.0.tgz#84816297dca65874811151b7cdcca47be6aad043"
-  integrity sha512-cU6hkqTwXo1alrozwWlFWThHIapXVWTQe0WYMaCjd4Cdo1/1GHBABcdhM0T9lJlMsjggLWwekqascfRZ7lGmlA==
+"@glint/environment-glimmerx@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@glint/environment-glimmerx/-/environment-glimmerx-0.4.1.tgz#9de32e5920cdd5bf380b3ebc8345f93c9b41d444"
+  integrity sha512-4d8oL7FLL4wXT4gtBuDSu7IXIj8UXLAc4v0MViJf377WDU3aPOIyUe0h/vxZVwboDh5UUEh5XKqXVB+JLXD5BQ==
   dependencies:
-    "@glint/config" "^0.3.0"
-    "@glint/template" "^0.3.0"
+    "@glint/config" "^0.4.1"
+    "@glint/template" "^0.4.1"
 
-"@glint/template@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@glint/template/-/template-0.3.0.tgz#11c6268ccd2ae7e48f3ddbceccd2f32539caf61b"
-  integrity sha512-V5gQrNimdPUIMxudGmp0Pzm4CIhkZHHMBpArQcNn1qfj86LBakYUuQ+VShG1TmQGYl4cFhPb3m9EPNemaMPbog==
+"@glint/template@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@glint/template/-/template-0.4.1.tgz#1f411da48aed776e04c1d6e52b3e7b3fff1268e2"
+  integrity sha512-mIlaLcxv/bJpVT2uwf1IwizL+BKhjhcuAeBuFQuFlc6T7R4WWnQM8rjtAXEAuRa0ii4BVwLL+fHI6SygFvxz6A==
 
-"@glint/transform@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@glint/transform/-/transform-0.3.0.tgz#6d2a1c0370b0dbb5c0185370b36804a4b6abc722"
-  integrity sha512-BculQegvFdnxOjYw9od+Syuo6EInqlB1OcQ8OsFDUZYner7SIcKFFIr86HZTYJVZQk/uj+rg9J5NTHJ33OToqw==
+"@glint/transform@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@glint/transform/-/transform-0.4.1.tgz#e79f6414292e2f4b6c2da887f714882089c35690"
+  integrity sha512-lZBo3SNojytebin0e/abPjsJdZy4m3ehnZAd9uAq7WDQh5mUMZGGevTMJjyKbG8l6xYOdJY0+aiPfYKXhlT+Wg==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/plugin-proposal-decorators" "7.10.5"
     "@babel/preset-typescript" "^7.10.4"
     "@glimmer/syntax" "^0.68.1"
-    "@glint/config" "^0.3.0"
+    "@glint/config" "^0.4.1"
 
 "@handlebars/parser@^1.1.0":
   version "1.1.0"

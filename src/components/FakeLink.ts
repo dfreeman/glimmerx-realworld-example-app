@@ -3,6 +3,7 @@ import { on, action } from '@glint/environment-glimmerx/modifier';
 import { hbs } from '@glimmerx/component';
 
 export interface FakeLinkSignature {
+  Element: HTMLAnchorElement;
   Args: {
     active?: boolean;
     disabled?: boolean;

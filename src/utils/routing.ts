@@ -17,6 +17,7 @@ export type RecognizedRoute =
 export type RouteName = RecognizedRoute['name'];
 
 export interface LinkToSignature {
+  Element: HTMLAnchorElement;
   Args: {
     route: RouteName;
     params?: string | Array<string>;

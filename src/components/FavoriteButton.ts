@@ -7,6 +7,7 @@ import { APIService } from '../utils/api';
 import { Article } from '../types';
 
 export interface FavoriteButtonSignature {
+  Element: HTMLButtonElement;
   Args: {
     /** The article to toggle favorite status for. */
     article: Article;
@@ -29,6 +30,7 @@ export default class FavoriteButton extends Component<FavoriteButtonSignature> {
         {{if this.favorited 'btn-primary' 'btn-outline-primary'}}
         {{if this.disabled 'disabled'}}
       "
+      ...attributes
       {{on 'click' this.toggleFavorite}}
     >
       <i class="ion-heart"></i>
